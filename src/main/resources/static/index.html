@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="dHeader">
+        <header>
+            <h1>Cadastro TheusMa</h1>
+        </header>
+    </div>
+
+    <div id="dForm">
+        <form action="" id="form">
+            <div class="form-group">
+                <label for="name">Nome</label><br>
+                <input type="text" id="nome">
+                <div class="error" id="erro-nome">
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <label for="email">Email</label><br>
+                <input type="text" id="email">
+                <div class="error" id="erro-email">
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <label for="telefone">Telefone</label><br>
+                <input type="text" id="telefone" value="" oninput="formatarTelefone(this)">
+                <div class="error" id="erro-telefone">
+                </div>
+            </div>
+
+            <br>
+        </div>
+            <div class="grupo-btn">
+                <button type="button" class="btn-cadastrar" onclick="cadastrar()">Cadastrar</button>
+                <button type="button" class="btn-atualizar" onclick="atualizar()">Atualizar</button>
+                <button type="button" class="btn-deletar" onclick="deletar()">Deletar</button>
+            </div>
+        </form>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
