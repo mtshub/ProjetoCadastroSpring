@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 *{
     box-sizing: border-box;
     margin: 0;
@@ -24,7 +25,7 @@ body {
     display: flex;
     justify-content: center;
 }
-#form {
+#formCadastro {
     color: white;
     text-align: left;
     letter-spacing: 1px;
@@ -104,4 +105,59 @@ input:-webkit-autofill:active {
     color: white !important;
     -webkit-box-shadow: 0 0 0px 1000px rgb(30, 30, 30) inset !important;
     -webkit-text-fill-color: white !important;
+}
+
+@keyframes subirTabela {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#dUsuariosTodo {
+    margin-top: 50px;
+    justify-content: center;
+    color: white;
+
+    &.tabela-visivel {
+        animation: subirTabela 0.75s;
+    }
+
+    #divUsuarios{
+        width: 80%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.548);
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            text-align: left;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid rgb(140, 140, 140);
+            letter-spacing: 1px;
+
+            thead th {
+                font-size: 1.25em;
+                background-color: rgb(0, 0, 0) !important;
+            }
+            th, td {
+                border: 1px solid rgb(140, 140, 140);
+                padding: 5px;
+            }
+            tr {
+                background-color: rgb(57, 57, 57);
+                font-size: 0.85em;
+                transition: 0.25s all;
+            }
+            tbody tr:nth-child(even) {
+                background-color: rgb(50, 50, 50);
+            }
+            tbody tr:hover {
+                background-color: rgb(37, 57, 83);
+            }
+        }
+    }
 }

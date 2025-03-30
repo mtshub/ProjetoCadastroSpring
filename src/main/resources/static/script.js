@@ -14,79 +14,80 @@ function formatarTelefone(input) {
     }
 }
 
-let modoEdicao = false;
+function resetarForm() {
+    document.getElementById('formCadastro').reset()
+}
 
-    function carregarUsuarios() {
-        fetch('http://localhost:8080/usuarios')
-            .then(resposta => resposta.json())
-            .then(usuarios => {
-                const tabela = document.getElementById('tabela-usuarios');
-                tabela.innerHTML = '';
+function cadastrarUsuario() {
+    const nome = document.getElementById('nome').value
+    const email = document.getElementById('email').value
+    const telefone = document.getElementById('telefone').value
 
-                usuarios.forEach(usuario => {
-                    const linha = document.createElement('tr');
+    if(nome == '' || email == '' || telefone == '') {
+        alert("Você deve preencher todos os campos para adicionar um usuário.")
+        return
+    }
 
-                    const celulaNome = document.createElement('td');
-                    celulaNome.textContent = usuario.nome;
+    const url = 'http://localhost:8080/usuarios'
 
-                    const celulaTelefone = document.createElement('td');
-                    celulaTelefone.textContent = usuario.telefone;
+    fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({nome, email, telefone})
+    })
+    .then(response => response.text())  // Aqui você pega a resposta do backend como texto
+    .then(message => {
+        alert(message);  // Exibe a mensagem diretamente no alert
+        carregarUsuarios()
+        resetarForm()
+    })
+    .catch (() => alert('Erro ao salvar o usuário.'))
+}
 
-                    linha.appendChild(celulaId);
-                    linha.appendChild(celulaTelefone);
+function verificarUsuarios() {
+    const tabela = document.getElementById('dUsuariosTodo');
+    const listaUsuarios = document.getElementById('listaUsuarios');
 
-                    tabela.appendChild(linha);
-                });
+    if (listaUsuarios.childElementCount > 0) {
+        tabela.style.display = 'flex';  // Torna a tabela visível
+        tabela.classList.add('tabela-visivel');
+    }
+}
+
+function carregarUsuarios() {
+    fetch('http://localhost:8080/usuarios')
+        .then(resposta => resposta.json())
+        .then(usuarios => {
+            const tabela = document.getElementById('listaUsuarios');
+            tabela.innerHTML = '';
+
+            usuarios.forEach(usuario => {
+                const linha = document.createElement('tr');
+
+                const celulaId = document.createElement('td');
+                celulaId.textContent = usuario.id;
+                celulaId.style.fontSize = '1.1em'
+                celulaId.style.fontWeight = '700'
+                celulaId.style.textAlign = 'center'
+
+                const celulaNome = document.createElement('td');
+                celulaNome.textContent = usuario.nome;
+
+                const celulaEmail = document.createElement('td');
+                celulaEmail.textContent = usuario.email;
+
+                const celulaTelefone = document.createElement('td');
+                celulaTelefone.textContent = usuario.telefone;
+
+                linha.appendChild(celulaId);
+                linha.appendChild(celulaNome);
+                linha.appendChild(celulaEmail);
+                linha.appendChild(celulaTelefone);
+
+                tabela.appendChild(linha);
+                verificarUsuarios()
             });
-    }
+        });
+}
 
-    document.getElementById('form-usuario').addEventListener('submit', function (evento) {
-        evento.preventDefault();
-
-        const id = parseInt(document.getElementById('usuario-id').value);
-        const nome = document.getElementById('usuario-nome').value;
-
-        const metodo = modoEdicao ? 'PUT' : 'POST';
-        const url = modoEdicao ? `http://localhost:8080/usuarios/${id}` : 'http://localhost:8080/usuarios';
-
-        fetch(url, {
-            method: metodo,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id, nome })
-        })
-        .then(() => {
-            alert(`Usuário ${modoEdicao ? 'atualizado' : 'adicionado'} com sucesso!`);
-            carregarUsuarios();
-            resetForm();
-        })
-        .catch(() => alert('Erro ao salvar usuário.'));
-    });
-
-    function editarUsuario(id, nome) {
-        modoEdicao = true;
-        document.getElementById('form-titulo').textContent = 'Editar Usuário';
-        document.getElementById('usuario-id').value = id;
-        document.getElementById('usuario-id').disabled = true;
-        document.getElementById('usuario-nome').value = nome;
-    }
-
-    function deletarUsuario(id) {
-        if (confirm('Deseja excluir este usuário?')) {
-            fetch(`http://localhost:8080/usuarios/${id}`, { method: 'DELETE' })
-                .then(() => {
-                    alert('Usuário deletado com sucesso!');
-                    carregarUsuarios();
-                })
-                .catch(() => alert('Erro ao deletar usuário.'));
-        }
-    }
-
-    function resetForm() {
-        modoEdicao = false;
-        document.getElementById('form-titulo').textContent = 'Novo Usuário';
-        document.getElementById('usuario-id').value = '';
-        document.getElementById('usuario-id').disabled = false;
-        document.getElementById('usuario-nome').value = '';
-    }
-
-    carregarUsuarios();
+carregarUsuarios()

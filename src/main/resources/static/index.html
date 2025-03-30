@@ -4,11 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro TheusMa</title>
     <link rel="stylesheet" href="style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
 </head>
 
 <body>
@@ -19,7 +16,7 @@
     </div>
 
     <div id="dForm">
-        <form action="" id="form">
+        <form action="" id="formCadastro">
             <div class="form-group">
                 <label for="name">Nome</label><br>
                 <input type="text" id="nome">
@@ -30,7 +27,7 @@
             <br>
             <div class="form-group">
                 <label for="email">Email</label><br>
-                <input type="text" id="email">
+                <input type="email" id="email">
                 <div class="error" id="erro-email">
                 </div>
             </div>
@@ -44,13 +41,30 @@
             </div>
 
             <br>
+    </div>
+    <div class="grupo-btn">
+        <button type="button" class="btn-cadastrar" onclick="cadastrarUsuario()">Cadastrar</button>
+        <button type="button" class="btn-atualizar" onclick="atualizar()">Atualizar</button>
+        <button type="button" class="btn-deletar" onclick="deletar()">Deletar</button>
+    </div>
+    </form>
+
+    <div id="dUsuariosTodo" style="display: none;">
+        <div id="divUsuarios">
+            <table id="tabelaUsers">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                    </tr>
+                </thead>
+                <tbody id="listaUsuarios">
+                </tbody>
+            </table>
         </div>
-            <div class="grupo-btn">
-                <button type="button" class="btn-cadastrar" onclick="cadastrar()">Cadastrar</button>
-                <button type="button" class="btn-atualizar" onclick="atualizar()">Atualizar</button>
-                <button type="button" class="btn-deletar" onclick="deletar()">Deletar</button>
-            </div>
-        </form>
+    </div>
 
     <script src="script.js"></script>
 </body>
