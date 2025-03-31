@@ -113,7 +113,7 @@ function carregarUsuarios() {
                 celulaTelefone.textContent = usuario.telefone
 
                 const celulaAcao = document.createElement('td')
-                celulaAcao.innerHTML = `<input type="radio" name="" data-id="${usuario.id}">`
+                celulaAcao.innerHTML = `<input type="radio" name="usuario" data-id="${usuario.id}">`
                 celulaAcao.style.textAlign = 'center'
 
                 linha.appendChild(celulaId);
