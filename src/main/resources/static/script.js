@@ -128,27 +128,27 @@ function carregarUsuarios() {
         });
 }
 
-let tamanhoAnterior = 0;
+if (window.location.href.includes('http://localhost:8080/exibir-usuarios')) {
+    carregarUsuarios()
+    let tamanhoAnterior = 0;
 
-function verificarAtualizacoes() {
+    function verificarAtualizacoes() {
+        fetch('http://localhost:8080/usuarios')
+            .then(resposta => resposta.json())
+            .then(usuarios => {
+                if (usuarios.length !== tamanhoAnterior) {
+                    verificarUsuarios()
+                    carregarUsuarios()
+                    tamanhoAnterior = usuarios.length;
+                }
+            });
+    }
+
     fetch('http://localhost:8080/usuarios')
         .then(resposta => resposta.json())
         .then(usuarios => {
-            if (usuarios.length !== tamanhoAnterior) {
-                verificarUsuarios()
-                carregarUsuarios()
-                tamanhoAnterior = usuarios.length;
-            }
+            tamanhoAnterior = usuarios.length;
         });
-}
 
-fetch('http://localhost:8080/usuarios')
-    .then(resposta => resposta.json())
-    .then(usuarios => {
-        tamanhoAnterior = usuarios.length;
-    });
-
-setInterval(verificarAtualizacoes, 3000);
-if (window.location.href.includes('http://localhost:8080/exibir-usuarios')) {
-    carregarUsuarios()
+    setInterval(verificarAtualizacoes, 3000);
 }
