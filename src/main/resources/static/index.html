@@ -6,20 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro TheusMa</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleIndex.css">
 </head>
 
 <body>
     <div id="dHeader">
         <header>
             <h1>Cadastro TheusMa</h1>
+            <nav>
+                <a href="" class="nav-link">Cadastrar</a>
+                <a href="http://localhost:8080/exibir-usuarios" class="nav-link">Exibir</a>
+            </nav>
         </header>
     </div>
 
     <div id="dForm">
         <form action="" id="formCadastro">
             <div class="form-group">
-                <label for="name">Nome</label><br>
-                <input type="text" id="nome">
+                <label for="nome">Nome</label><br>
+                <input type="text" id="nome" autocomplete="name">
                 <div class="error" id="erro-nome">
                 </div>
             </div>
@@ -27,43 +32,24 @@
             <br>
             <div class="form-group">
                 <label for="email">Email</label><br>
-                <input type="email" id="email">
+                <input type="email" id="email" autocomplete="email">
                 <div class="error" id="erro-email">
                 </div>
             </div>
-
+            
             <br>
             <div class="form-group">
                 <label for="telefone">Telefone</label><br>
-                <input type="text" id="telefone" value="" oninput="formatarTelefone(this)">
+                <input type="text" id="telefone" autocomplete="tel-area-code" oninput="formatarTelefone(this)">
                 <div class="error" id="erro-telefone">
                 </div>
             </div>
 
             <br>
-    </div>
     <div class="grupo-btn">
         <button type="button" class="btn-cadastrar" onclick="cadastrarUsuario()">Cadastrar</button>
-        <button type="button" class="btn-atualizar" onclick="atualizar()">Atualizar</button>
-        <button type="button" class="btn-deletar" onclick="deletar()">Deletar</button>
     </div>
     </form>
-
-    <div id="dUsuariosTodo" style="display: none;">
-        <div id="divUsuarios">
-            <table id="tabelaUsers">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Telefone</th>
-                    </tr>
-                </thead>
-                <tbody id="listaUsuarios">
-                </tbody>
-            </table>
-        </div>
     </div>
 
     <script src="script.js"></script>

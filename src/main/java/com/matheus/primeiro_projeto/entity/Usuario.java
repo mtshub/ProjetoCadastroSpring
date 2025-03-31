@@ -2,12 +2,12 @@ package com.matheus.primeiro_projeto.entity;
 
 public class Usuario {
     private static int ultimoId = 0;
-    private int id;
+    private final int id;
     private String nome;
     private String email;
     private String telefone;
 
-    public Usuario(int id, String nome, String email, String telefone) {
+    public Usuario(String nome, String email, String telefone) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;

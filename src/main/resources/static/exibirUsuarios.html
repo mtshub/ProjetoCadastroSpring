@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro TheusMa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleExibir.css">
+</head>
+
+<body>
+    <div id="dHeader">
+        <header>
+            <h1>Lista Usuários</h1>
+            <nav>
+                <a href="http://localhost:8080/" class="nav-link">Cadastrar</a>
+                <a href="" class="nav-link">Exibir</a>
+            </nav>
+        </header>
+    </div>
+
+    <div id="dUsuariosTodo" style="display: none;">
+        <div id="divUsuarios">
+            <table id="tabelaUsers">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th style="text-align: center;">X</th>
+                    </tr>
+                </thead>
+                <tbody id="listaUsuarios">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="grupo-btn">
+        <button type="button" class="btn-atualizar" id="btnAtt" style="visibility: hidden;" onclick="atualizar()">Atualizar</button>
+        <button type="button" class="btn-deletar" id="btnDel" style="visibility: hidden;" onclick="deletarUsuario()">Deletar</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
