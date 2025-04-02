@@ -2,7 +2,7 @@ package com.matheus.primeiro_projeto.entity;
 
 public class Usuario {
     private static int ultimoId = 0;
-    private final int id;
+    private int id;
     private String nome;
     private String email;
     private String telefone;
@@ -12,6 +12,10 @@ public class Usuario {
         this.email = email;
         this.telefone = telefone;
         this.id = ++ultimoId;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {

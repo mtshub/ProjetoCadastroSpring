@@ -37,12 +37,41 @@
             </table>
         </div>
     </div>
-    <div class="grupo-btn">
-        <button type="button" class="btn-atualizar" id="btnAtt" style="visibility: hidden;" onclick="atualizar()">Atualizar</button>
-        <button type="button" class="btn-deletar" id="btnDel" style="visibility: hidden;" onclick="deletarUsuario()">Deletar</button>
+
+    <div id="dForm" style="display: none;">
+        <form action="" id="formCadastro">
+            <div class="form-group">
+                <label for="nome">Nome</label><br>
+                <input type="text" id="nome" autocomplete="name">
+                <div class="error" id="erro-nome">
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <label for="email">Email</label><br>
+                <input type="email" id="email" autocomplete="email">
+                <div class="error" id="erro-email">
+                </div>
+            </div>
+            
+            <br>
+            <div class="form-group">
+                <label for="telefone">Telefone</label><br>
+                <input type="text" id="telefone" autocomplete="tel-area-code" oninput="formatarTelefone(this)">
+                <div class="error" id="erro-telefone">
+                </div>
+            </div>
+    </form>
     </div>
 
-    <script src="script.js"></script>
+    <div class="grupo-btn">
+        <button type="button" class="btn-atualizar" id="btnUsuarioSelecionado" style="display: none;" onclick="mostrarUsuarioAtualizado()">Atualizar</button>
+        <button type="button" class="btn-atualizar" id="btnAtt" style="display: none;" onclick="atualizarUsuario()">Atualizar</button>
+        <button type="button" class="btn-deletar" id="btnDel" style="display: none;" onclick="deletarUsuario()">Deletar</button>
+    </div>
+
+    <script src="scriptExibir.js"></script>
 </body>
 
 </html>
