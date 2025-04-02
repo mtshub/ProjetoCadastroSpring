@@ -54,7 +54,7 @@ public class AtualizacaoController {
              listaUsuarios.forEach(usuarioExistente -> {
                 if(id == usuarioExistente.getId()) {
                     usuarioExistente.setNome(usuarioAtualizado.getNome().isBlank() ? usuarioExistente.getNome() : usuarioAtualizado.getNome());
-                    usuarioExistente.setEmail(usuarioAtualizado.getNome().isBlank() ? usuarioExistente.getEmail() : usuarioAtualizado.getEmail());
+                    usuarioExistente.setEmail(usuarioAtualizado.getEmail().isBlank() ? usuarioExistente.getEmail() : usuarioAtualizado.getEmail());
                     usuarioExistente.setTelefone(usuarioAtualizado.getTelefone().isBlank() ? usuarioExistente.getTelefone() : usuarioAtualizado.getTelefone());
                 }
             });
